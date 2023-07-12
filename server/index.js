@@ -6,7 +6,7 @@ import bodyParser from "body-parser";
 import cors from "cors";
 const app = express();
 dotenv.config();
-// dotenv.config({ path: "server/.env" });
+
 app.use(express.json());
 app.use(cors());
 app.use(bodyParser.json());
@@ -18,13 +18,7 @@ const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
 });
 
-//--- database connection ---
-// import pkg from "pg";
-// const { Pool } = pkg;
-// const pool = new Pool({
-//   connectionString: process.env.DATABASE_URL,
-// });
-// pool.connect();
+
 
 //--- routes ---
 
@@ -145,9 +139,8 @@ app.get("/api/playlists/:id", (req, res) => {
 //--- add track to playlist ---
 app.post("/api/playlists/:track_id", (req, res) => {
   pool
-    .query("INSERT INTO Playlists (track_id, playlist_id) VALUES ($1, $2)", [
+    .query("INSERT INTO Playlists (track_id) VALUES ($1)", [
       req.params.track_id,
-      req.body.playlist_id,
     ])
     .then((result) => {
       res.send(result.rows);
@@ -155,12 +148,11 @@ app.post("/api/playlists/:track_id", (req, res) => {
 });
 
 //--- delete track from playlist ---
-app.delete("/api/playlists/:playlist_id/:track_id", (req, res) => {
+app.delete("/api/playlists/:track_id", (req, res) => {
   console.log("deleting");
   pool
-    .query("DELETE FROM Playlists WHERE track_id=$1 AND playlist_id=$2", [
+    .query("DELETE FROM Playlists WHERE track_id=$1", [
       req.params.track_id,
-      req.params.playlist_id,
     ])
     .then((result) => {
       res.send(result.rows);

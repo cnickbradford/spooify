@@ -2,10 +2,7 @@ import React, { useState, useEffect } from "react";
 import useAuth from "./useAuth";
 import Player from "../Player/Player";
 import HeaderImage from "../HeaderImage/HeaderImage";
-// import Featuring from "../Featuring/Featuring.jsx";
-// import Discography from "../Discography/Discography";
 import Sidebar from "../sidebar/Sidebar.jsx";
-// import FansLike from "../FansLike/FansLike";
 import PlaylistPage from "../PlaylistPage/PlaylistPage";
 
 const Dashboard = (props) => {

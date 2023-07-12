@@ -1,16 +1,1 @@
-.disco-container {
-  padding-left: 15px;
-  background-color: rgb(24, 25, 25);
-}
-
-.title {
-  text-align: left;
-  margin-left: 3px;
-  font-size: 23px;
-  color: white;
-}
-
-.disco-bar {
-  display: flex;
-  flex-direction: row;
-}
+.disco-container{padding-left:15px;background-color:#181919}.title{text-align:left;margin-left:3px;font-size:23px;color:#fff}.disco-bar{display:flex;flex-direction:row}
